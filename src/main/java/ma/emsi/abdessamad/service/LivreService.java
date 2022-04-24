@@ -1,7 +1,9 @@
 package ma.emsi.abdessamad.service;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.OrderBy;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -21,13 +23,15 @@ public class LivreService {
 		 this.livreRepo=livreRepo; 
 	}
 	
-	//Method To Find All Books 
-	public Collection<Livre> getAllBooks() {
+	
+	//Method To Find All Books Ascending
+	@OrderBy
+	public List<Livre> getAllBooks() {
 		return livreRepo.findAll();
 	}
 	
 	//Method To Find Book By Id
-	public Collection<Livre> getBookById (Integer id) {
+	public List<Livre> getBookById (Integer id) {
 		Optional<Livre> livre = livreRepo.findById(id);
 		if(livre.isPresent()) {
 			return livreRepo.findAllById(id);

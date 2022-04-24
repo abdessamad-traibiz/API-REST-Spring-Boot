@@ -1,6 +1,6 @@
 package ma.emsi.abdessamad.repos;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -12,8 +12,8 @@ import ma.emsi.abdessamad.entities.Livre;
 public interface LivreRepo extends JpaRepository<Livre, Integer>{
 	
 	
-	
-	Collection<Livre> findAllById(Integer id);
+	List<Livre> findAllById(Integer id);
+	List<Livre> findAll();
 	
 	/*
 	 * Collection<Livre> findBytitreLivre(String titreLivre); Collection<Livre>

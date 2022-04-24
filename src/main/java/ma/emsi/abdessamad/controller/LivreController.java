@@ -1,6 +1,7 @@
 package ma.emsi.abdessamad.controller;
 
-import java.util.Collection;
+import java.util.List;
+
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,14 +26,13 @@ public class LivreController {
 	
 	  //L’utilisateur peut avoir la liste des livres en utilisant l’url : emsi_api/livres
 	  @GetMapping("/emsi_api/livres")
-	  public Collection<Livre> getAllBooks() {
+	  public List<Livre> getAllBooks() {
 		   return this.livreService.getAllBooks();
 	  }
 	
 	  //L’utilisateur peut avoir la liste un livre en utilisant l’url : emsi_api/livres/{id}
-		
 		  @GetMapping("/emsi_api/livres/{id}") 
-		  public Collection<Livre> getBookById(@PathVariable Integer id) { 
+		  public List<Livre> getBookById(@PathVariable Integer id) { 
 			  return this.livreService.getBookById(id);
 		  }
 		 

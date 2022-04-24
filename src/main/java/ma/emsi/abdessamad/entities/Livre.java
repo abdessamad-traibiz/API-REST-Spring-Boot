@@ -23,10 +23,11 @@ import lombok.NoArgsConstructor;
 @Entity 
 @Data @AllArgsConstructor @NoArgsConstructor
 
+
 public class Livre {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	public Integer id;
 	
 	@Column(name = "TITRE",length = 50,nullable = false)
 	private String titreLivre;
@@ -43,16 +44,13 @@ public class Livre {
 	@Column(name = "NOMBRE_PAGE",nullable = false)
 	private int nombrePageLivre;
 	
-	@Column(name="ISBN",length = 13,nullable = false,updatable = false)
+	@Column(name="ISBN",length = 20,nullable = false,unique = true,updatable = false)
 	private String isbnLivre;
 	
 	@Temporal(TemporalType.TIMESTAMP) @CreationTimestamp
 	private Date derniereConsultation;
 	
 	private boolean disponibilteLivre;
-	
-	
-	
 	
 	
 }
