@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.persistence.OrderBy;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -57,25 +58,26 @@ public class LivreService {
 
 	public ResponseEntity<Livre> updateBookById(Livre livre, Integer id) {
 		Livre getBook = livreRepo.getById(id);
-		getBook.setTitreLivre(livre.getTitreLivre());
-		getBook.setDateSortieLivre(livre.getDateSortieLivre());
-		getBook.setAuteurLivre(livre.getAuteurLivre());
-		getBook.setNombrePageLivre(livre.getNombrePageLivre());
-		getBook.setDerniereConsultation(livre.getDerniereConsultation());
-		
-		Livre updateLivre = livreRepo.save(getBook);
-		return ResponseEntity.ok().body(updateLivre);
-
-
-
-
+			getBook.setTitreLivre(livre.getTitreLivre());
+			getBook.setDateSortieLivre(livre.getDateSortieLivre());
+			getBook.setAuteurLivre(livre.getAuteurLivre());
+			getBook.setNombrePageLivre(livre.getNombrePageLivre());
+			getBook.setDerniereConsultation(livre.getDerniereConsultation());
+			
+			Livre updateLivre = livreRepo.save(getBook);
+			return ResponseEntity.ok().body(updateLivre);
+		}
+	
+	//Add book
+	public ResponseEntity<Livre> addBook(Livre newBook) {
+		Livre book = livreRepo.save(newBook);
+	    if (book == null) {
+	    	throw new RuntimeException("Wrong Data !!");
+	    } else {
+	        return new ResponseEntity<>(book, HttpStatus.CREATED);
+	    }
 	}
-	
 
 	
 	
-
-	
-
-
 }

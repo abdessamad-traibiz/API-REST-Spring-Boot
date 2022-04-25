@@ -2,10 +2,10 @@ package ma.emsi.abdessamad.controller;
 
 import java.util.List;
 
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +23,14 @@ public class LivreController {
 	public LivreController(LivreService livreService) {
 		this.livreService=livreService;
 	}
+	
+	
+		//Add Book
+		@PostMapping("/emsi_api/livres")
+		public void addBook(@RequestBody Livre livre) {
+			  livreService.addBook(livre);
+			}
+	
 	
 	  //L’utilisateur peut avoir la liste des livres en utilisant l’url : emsi_api/livres
 	  @GetMapping("/emsi_api/livres")
